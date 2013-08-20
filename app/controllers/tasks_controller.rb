@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
   def index
     sleep 1
-    @incomplete_tasks = Task.where(complete: false)
-    @complete_tasks = Task.where(complete: true)
+    @incomplete_tasks = Task.where(complete: false, user_id: current_user)
+    @complete_tasks = Task.where(complete: true, user_id: current_user)
   end
 
   def new
@@ -10,7 +10,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create!(params[:task])
+    @task = Task.create(params[:task])
+    @task.user = current_user
+    @task.save!
     redirect_to tasks_url
   end
 

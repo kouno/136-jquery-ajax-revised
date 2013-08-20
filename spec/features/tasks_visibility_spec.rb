@@ -9,9 +9,8 @@ describe "Task Visibility" do
   end
 
   it "is visible only to the task owner" do
-    pending
     user_2 = FactoryGirl.create(:user)
-    task   = FactoryGirl.create(:task, user: user)
+    task   = FactoryGirl.create(:task, user: user_2)
 
     visit '/'
 
