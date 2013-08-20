@@ -1,0 +1,4 @@
+%ul
+  - read_only_tasks.each do |task|
+    %li
+      #{task.name} (#{task.user.email}) - #{task.complete ? 'complete' : 'incomplete'}

@@ -6,3 +6,6 @@
 %h2 Comlpete Tasks
 #complete_tasks.tasks
   = render @complete_tasks
+%h2 Tasks I'm following
+#followed_tasks.tasks
+  = render 'read_only_tasks', read_only_tasks: @followed_tasks

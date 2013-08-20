@@ -28,14 +28,18 @@ describe "Followers of tasks" do
 
   context "once a follower is added" do
     before(:each) do
-      FactoryGirl.create(:follower, task_id: task, user_id: user_2)
+      task.followers << FactoryGirl.build(:follower, task_id: task.id, user_id: user_2.id)
+      task.save!
 
       logout user
       login_as user_2
     end
 
     it "is visible in the follower list" do
-      pending
+      visit "/"
+
+      expect(page).to have_content("Tasks I'm following")
+      expect(page).to have_content(task.name)
     end
   end
 end

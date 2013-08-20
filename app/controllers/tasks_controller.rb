@@ -3,6 +3,7 @@ class TasksController < ApplicationController
     sleep 1
     @incomplete_tasks = Task.where(complete: false, user_id: current_user)
     @complete_tasks = Task.where(complete: true, user_id: current_user)
+    @followed_tasks = Task.joins(:followers).where("followers.user_id = ?", current_user.id)
   end
 
   def new
