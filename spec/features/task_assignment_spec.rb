@@ -13,7 +13,7 @@ describe "Task Assignment" do
   it "can assign task to other user" do
     visit "/tasks/#{task.id}/edit"
 
-    select user_2.email, from: "Owner"
+    select user_2.email, from: "task_user_id"
 
     click_button 'Save'
 

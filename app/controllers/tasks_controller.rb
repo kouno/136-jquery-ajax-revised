@@ -19,7 +19,12 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @task.update_attributes!(params[:task])
+    flash[:notice] = "Task saved"
     redirect_to tasks_url
+  end
+
+  def edit
+    @task = Task.find(params[:id])
   end
 
   def destroy

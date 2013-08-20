@@ -1,0 +1,5 @@
+%h2 Assign task to
+
+= form_for @task do |f|
+  = f.select :user_id, options_from_collection_for_select(User.all, :id, :email) 
+  = f.submit "Save"

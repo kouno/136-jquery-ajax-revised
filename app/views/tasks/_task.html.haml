@@ -3,3 +3,4 @@
   = f.submit "Update"
   = f.label :complete, task.name
   = link_to "(remove)", task, method: :delete, data: {confirm: "Are you sure?"}
+  = link_to "(assign to)", edit_task_path(task)
