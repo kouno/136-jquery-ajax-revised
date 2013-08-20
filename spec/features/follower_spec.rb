@@ -10,27 +10,32 @@ describe "Followers of tasks" do
     login_as user
   end
 
-  it "adds follower to a task" do
+  it "is empty at first" do
     visit "/tasks/#{task.id}/followers"
 
-    check "follower_#{user_2.id}"
+    expect(page).to_not have_content(user_2.email)
+  end
 
-    click_button 'Save'
+  it "adds follower to a task" do
+    visit "/tasks/#{task.id}/followers/new"
 
-    expect(page).to have_content('Task saved')
+    select user_2.email, from: 'follower_user_id'
+
+    click_button 'Create Follower'
+
+    expect(page).to have_content('Follower saved')
   end
 
   context "once a follower is added" do
     before(:each) do
-      task.followers << user_2
-      task.save!
+      FactoryGirl.create(:follower, task_id: task, user_id: user_2)
 
       logout user
       login_as user_2
     end
 
     it "is visible in the follower list" do
-
+      pending
     end
   end
 end

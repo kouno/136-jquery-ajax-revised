@@ -1,0 +1,10 @@
+%h2 Task: #{@task.name}
+
+= link_to "New Follower", new_task_follower_path, id: "new_link"
+
+%ul
+  - @followers.each do |follower|
+    %li
+      #{follower.user.email}
+
+%p= link_to "Back to tasks", tasks_path

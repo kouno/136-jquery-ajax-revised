@@ -44,6 +44,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    database_cleaner (1.0.1)
     devise (3.0.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -144,6 +145,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coffee-rails
+  database_cleaner (< 1.1.0)
   devise
   factory_girl_rails
   haml

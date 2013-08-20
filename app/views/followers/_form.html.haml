@@ -1,0 +1,3 @@
+= form_for [@task, @follower] do |f|
+  = f.select :user_id, options_from_collection_for_select(@users, :id, :email)
+  = f.submit

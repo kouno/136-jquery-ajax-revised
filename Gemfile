@@ -11,6 +11,7 @@ gem 'haml'
 gem 'devise'
 
 group :development, :test do
+  gem 'database_cleaner', '< 1.1.0'
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails'
   gem 'capybara'
