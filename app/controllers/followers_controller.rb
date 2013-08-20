@@ -11,7 +11,7 @@ class FollowersController < ApplicationController
     if @task.followers.empty?
       @users = User.all
     else
-      @users = User.where('id != ?', @task.followers.map(&:user_id).uniq)
+      @users = User.where('id NOT IN (?)', @task.followers.map(&:user_id).uniq)
     end
   end
 
